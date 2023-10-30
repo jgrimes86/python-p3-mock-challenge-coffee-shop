@@ -73,7 +73,26 @@ class Customer:
     def create_order(self, coffee, price):
         new_order = Order(self, coffee, price)
         return new_order
-    
+
+    @classmethod
+    def most_aficionado(cls, coffee):
+        coffee_orders = [order for order in Order.all if order.coffee == coffee]
+        customer_set = set([order.customer for order in coffee_orders])
+        current_aficionado = []
+        most_spent = 0
+        for cust in customer_set:
+            purchases = [order.price for order in coffee_orders if order.customer == cust]
+            total_purchase = sum(purchases)
+            if total_purchase > most_spent:
+                most_spent = total_purchase
+                current_aficionado = cust
+        if len(coffee_orders) == 0:
+            return None
+        else:
+            return current_aficionado
+
+
+
 class Order:
 
     all = []
