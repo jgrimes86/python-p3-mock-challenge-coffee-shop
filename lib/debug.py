@@ -11,6 +11,7 @@ cust2 = Customer("Amy")
 
 cof1 = Coffee("Latte")
 cof2 = Coffee("Espresso")
+cof3 = Coffee("Pumpkin Spice")
 
 ord1 = Order(cust1, cof1, 5.25)
 ord2 = Order(cust2, cof1, 5.20)

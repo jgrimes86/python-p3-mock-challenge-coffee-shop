@@ -30,10 +30,17 @@ class Coffee:
         return unique_customer_list
 
     def num_orders(self):
-        pass
+        return len(self.orders())
     
     def average_price(self):
-        pass
+        total_price = 0
+        for order in self.orders():
+            total_price += order.price
+        if total_price == 0:
+            return 0
+        else:
+            return round(total_price / self.num_orders(), 2)
+        
 
 class Customer:
     def __init__(self, name):
@@ -64,7 +71,8 @@ class Customer:
         return unique_coffee_list
     
     def create_order(self, coffee, price):
-        pass
+        new_order = Order(self, coffee, price)
+        return new_order
     
 class Order:
 
